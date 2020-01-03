@@ -12,12 +12,12 @@ def __robo_wheel_control(wheel, direction='forward', mode='HIGH'):
 
 def __robo_move():
     '''Move left wheel forward.'''
-    utils.__robo_wheel_control('left', 'forward', 'HIGH')
-    utils.__robo_wheel_control('right', 'forward', 'HIGH')
+    __robo_wheel_control('left', 'forward', 'HIGH')
+    __robo_wheel_control('right', 'forward', 'HIGH')
 
 def __robo_stop():
-    utils.__robo_wheel_control('left', 'forward', 'LOW')
-    utils.__robo_wheel_control('right', 'forward', 'LOW')
+    __robo_wheel_control('left', 'forward', 'LOW')
+    __robo_wheel_control('right', 'forward', 'LOW')
 
 def detect_obstacle_dist():
     '''Calculate the distance of obstacle.'''
