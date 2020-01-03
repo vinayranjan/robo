@@ -19,7 +19,6 @@ def _control_servo():
             for x in range(len(control)):
                 front_pwm.ChangeDutyCycle(control[x])
                 time.sleep(0.5)
-                print x
     except KeyboardInterrupt:
         GPIO.cleanup()
 
@@ -34,8 +33,7 @@ def robo_stop():
 def robo_init():
     '''Init the robo GPIO conf and get ready for action.'''
     global front_pwm
-    GPIO.setmode(GPIO.BOARD)
+    GPIO.setmode(GPIO.BCM)
     # servo setup
     GPIO.setup(gpio['servo']['front_trigger'],GPIO.OUT) # front
-    print(gpio['servo']['front_trigger'], "********")
     front_pwm = GPIO.PWM(gpio['servo']['front_trigger'], 50)

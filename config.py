@@ -1,7 +1,7 @@
 # servo responsible for rotating ultrasonic sersors
 gpio = {
     'servo': {
-        'front_trigger': 11,
+        'front_trigger': 17,
         'reverse_trigger': 0 # to be defined later
     },
 
