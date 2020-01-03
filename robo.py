@@ -8,5 +8,8 @@ import utils
 
 if __name__ == '__main__':
     utils.robo_init()
-    utils.detect_obstacle_dist()
+    #utils.detect_obstacle_dist()
+    utils.__left_turn()
+    time.sleep(2)
+    utils.stop()
     GPIO.cleanup()

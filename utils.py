@@ -19,6 +19,14 @@ def __robo_stop():
     __robo_wheel_control('left', 'forward', 'LOW')
     __robo_wheel_control('right', 'forward', 'LOW')
 
+def __left_turn():
+    __robo_wheel_control('left', 'forward', 'LOW')
+    __robo_wheel_control('right', 'forward', 'HIGH')
+
+def __right_turn():
+    __robo_wheel_control('left', 'forward', 'HIGH')
+    __robo_wheel_control('right', 'forward', 'LOW')
+
 def detect_obstacle_dist():
     '''Calculate the distance of obstacle.'''
     front_pwm = GPIO.PWM(gpio['servo']['front_trigger'], 50)
