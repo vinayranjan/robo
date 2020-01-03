@@ -75,4 +75,8 @@ def robo_init():
     # setup Ultrasonic Sensors
     GPIO.setup(gpio['ultrasensor']['front_trigger'], GPIO.OUT)
     GPIO.setup(gpio['ultrasensor']['front_echo'], GPIO.IN)
-    
+
+    GPIO.setup(gpio['wheel']['left_forward'], GPIO.OUT)
+    GPIO.setup(gpio['wheel']['right_forward'], GPIO.OUT)
+    GPIO.setup(gpio['wheel']['left_reverse'], GPIO.OUT)
+    GPIO.setup(gpio['wheel']['right_reverse'], GPIO.OUT)
