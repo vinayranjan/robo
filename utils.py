@@ -12,6 +12,7 @@ def robo_move(direction='forward'):
 def _control_servo():
     '''Control the movement/ angle of servo.'''
     front_pwm.start(2.5)# starting duty cycle ( it set the servo to 0 degree )
+    control = [5,7.5,10]
     try:
         while True:
             for x in range(len(control)):
