@@ -19,3 +19,5 @@ if __name__ == '__main__':
     time.sleep(1)
     utils.__robo_wheel_control('left', 'reverse', 'LOW')
     utils.__robo_wheel_control('right', 'reverse', 'LOW')
+
+    GPIO.cleanup()
