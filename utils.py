@@ -67,6 +67,7 @@ def robo_stop():
 
 def robo_init():
     '''Init the robo GPIO conf and get ready for action.'''
+    GPIO.cleanup()
     GPIO.setmode(GPIO.BCM)
 
     # servo setup
