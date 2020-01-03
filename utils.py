@@ -18,8 +18,8 @@ def _control_servo():
                 p.ChangeDutyCycle(control[x])
                 time.sleep(0.5)
                 print x
-        except KeyboardInterrupt:
-            GPIO.cleanup()
+    except KeyboardInterrupt:
+        GPIO.cleanup()
 
 def detect_obstacle_dist():
     '''Calculate the distance of obstacle.'''
