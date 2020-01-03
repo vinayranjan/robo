@@ -6,7 +6,7 @@ gpio = {
     },
 
     # motors responsible for moving the robo
-    'motor': {
+    'wheel': {
         'left_forward': 26,
         'left_reverse': 20,
         'right_forward': 16,
@@ -19,5 +19,10 @@ gpio = {
         'reverse_trigger': 0, # to be defined later
         'reverse_trigger': 0 # to be defined later 
     }
+}
+
+threshold = {
+    'min_stop_dist': 25,
+    'servo_cycle': [5,7.5,10]
 }
 

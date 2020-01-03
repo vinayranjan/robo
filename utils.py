@@ -1,7 +1,18 @@
 """All the required modules/functions available here."""
 import time
 import RPi.GPIO as GPIO
-from config import gpio
+from config import gpio, threshold
+
+def __robo_wheel_control(wheel, direction='forward', mode='HIGH'):
+    '''Move wheels forward/reverse.'''
+    if direction == 'forward':
+        GPIO.output(gpio['wheel'][wheel + '_forward'], eval('GPIO.'+ mode))
+    if direction == 'reverse':
+        GPIO.output(gpio['wheel'][wheel + '_reverse'], eval('GPIO.'+ mode))
+
+def __robo_right_wheel(direction='forward'):
+    '''Move left wheel forward.'''
+    return True
 
 def robo_move(direction='forward'):
     '''Responsible for moving the robo.
@@ -13,7 +24,7 @@ def detect_obstacle_dist():
     '''Calculate the distance of obstacle.'''
     front_pwm = GPIO.PWM(gpio['servo']['front_trigger'], 50)
     front_pwm.start(2.5) # set servo to 0 degree.
-    control = [5,7.5,10]
+    control = threshold['servo_cycle']
     try:
         while True:
             for x in range(len(control)):
@@ -34,7 +45,7 @@ def __get_distance():
  
     StartTime = time.time()
     StopTime = time.time()
- 
+
     # save StartTime
     while GPIO.input(gpio['ultrasensor']['front_echo']) == 0:
         StartTime = time.time()
