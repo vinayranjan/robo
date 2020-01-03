@@ -1,4 +1,5 @@
 """All the required modules/functions available here."""
+import time
 import RPi.GPIO as GPIO
 from config import gpio
 
