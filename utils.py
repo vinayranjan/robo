@@ -10,27 +10,33 @@ def __robo_wheel_control(wheel, direction='forward', mode='HIGH'):
     if direction == 'reverse':
         GPIO.output(gpio['wheel'][wheel + '_reverse'], eval('GPIO.'+ mode))
 
-def __robo_right_wheel(direction='forward'):
+def __robo_move():
     '''Move left wheel forward.'''
-    return True
+    utils.__robo_wheel_control('left', 'forward', 'HIGH')
+    utils.__robo_wheel_control('right', 'forward', 'HIGH')
 
-def robo_move(direction='forward'):
-    '''Responsible for moving the robo.
-       direction can be both forward and reverse
-    '''
-    return true
+def __robo_stop():
+    utils.__robo_wheel_control('left', 'forward', 'LOW')
+    utils.__robo_wheel_control('right', 'forward', 'LOW')
 
 def detect_obstacle_dist():
     '''Calculate the distance of obstacle.'''
     front_pwm = GPIO.PWM(gpio['servo']['front_trigger'], 50)
     front_pwm.start(2.5) # set servo to 0 degree.
     control = threshold['servo_cycle']
+    __robo_move()
     try:
         while True:
             for x in range(len(control)):
                 front_pwm.ChangeDutyCycle(control[x])
                 time.sleep(0.5)
-                print(__get_distance())
+                dist = __get_distance()
+                print(dist)
+                if dist < 25:
+                    __robo_stop()
+                else:
+                    pass
+                    
     except KeyboardInterrupt:
         GPIO.cleanup()
 
@@ -67,7 +73,6 @@ def robo_stop():
 
 def robo_init():
     '''Init the robo GPIO conf and get ready for action.'''
-    GPIO.cleanup()
     GPIO.setmode(GPIO.BCM)
 
     # servo setup
