@@ -16,7 +16,7 @@ def _control_servo():
     try:
         while True:
             for x in range(len(control)):
-                p.ChangeDutyCycle(control[x])
+                front_pwm.ChangeDutyCycle(control[x])
                 time.sleep(0.5)
                 print x
     except KeyboardInterrupt:
