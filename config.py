@@ -2,7 +2,7 @@
 gpio = {
     'servo': {
         'front_trigger': 17,
-        'reverse_trigger': 0 # to be defined later
+        'back_trigger': 0 # to be defined later
     },
 
     # motors responsible for moving the robo
