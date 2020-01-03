@@ -31,6 +31,7 @@ def robo_stop():
 
 def robo_init():
     '''Init the robo GPIO conf and get ready for action.'''
+    global front_pwm
     GPIO.setmode(GPIO.BCM)
     # servo setup
     GPIO.setup(gpio['servo']['front_trigger'],GPIO.OUT) # front
