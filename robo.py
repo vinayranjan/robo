@@ -7,4 +7,4 @@ import utils
 
 if __name__ == '__main__':
     utils.robo_init()
-    utils._control_servo()
+    utils.detect_obstacle_dist()
