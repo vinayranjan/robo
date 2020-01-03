@@ -1,8 +1,10 @@
 """Main control file of the robo."""
 
 import time
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 from config import gpio
+import utils
 
-
-print(gpio['servo']['front_trigger'])
+if __name__ == '__main__':
+    utils.robo_init()
+    utils._control_servo()
