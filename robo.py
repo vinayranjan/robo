@@ -13,3 +13,9 @@ if __name__ == '__main__':
     time.sleep(1)
     utils.__robo_wheel_control('left', 'forward', 'LOW')
     utils.__robo_wheel_control('right', 'forward', 'LOW')
+
+    utils.__robo_wheel_control('left', 'reverse', 'HIGH')
+    utils.__robo_wheel_control('right', 'reverse', 'HIGH')
+    time.sleep(1)
+    utils.__robo_wheel_control('left', 'reverse', 'LOW')
+    utils.__robo_wheel_control('right', 'reverse', 'LOW')
