@@ -20,8 +20,8 @@ def __robo_stop():
     __robo_wheel_control('right', 'forward', 'LOW')
 
 def __left_turn():
-    __robo_wheel_control('left', 'forward', 'LOW')
-    __robo_wheel_control('right', 'forward', 'HIGH')
+    __robo_wheel_control('left', 'forward', 'HIGH')
+    __robo_wheel_control('right', 'reverse', 'HIGH')
 
 def __right_turn():
     __robo_wheel_control('left', 'forward', 'HIGH')
