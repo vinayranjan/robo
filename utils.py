@@ -12,20 +12,25 @@ def __robo_wheel_control(wheel, direction='forward', mode='HIGH'):
 
 def __forward():
     '''Move left wheel forward.'''
+    print('forward start')
     __robo_wheel_control('left', 'forward', 'HIGH')
     __robo_wheel_control('right', 'forward', 'HIGH')
+    print('forward end')
 
 def __reverse():
     '''Move left wheel forward.'''
+    print('reverse start')
     __robo_wheel_control('left', 'reverse', 'HIGH')
     __robo_wheel_control('right', 'reverse', 'HIGH')
+    print('reverse stop')
 
 def __stop():
+    print('reverse start')
     __robo_wheel_control('left', 'forward', 'LOW')
     __robo_wheel_control('right', 'forward', 'LOW')
     __robo_wheel_control('left', 'reverse', 'LOW')
     __robo_wheel_control('right', 'reverse', 'LOW')
-    return
+    print('reverse stop')
 
 def __left_turn():
     '''Move robo left.'''

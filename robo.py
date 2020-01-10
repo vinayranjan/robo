@@ -10,13 +10,16 @@ if __name__ == '__main__':
     utils.robo_init()
     #utils.detect_obstacle_dist()
 
-    utils.__stop()
-    time.sleep(3)
     utils.__forward()
+
     time.sleep(3)
     utils.__stop()
     
+    utils.__reverse()
 
+    time.sleep(3)
+    utils.__stop()
+    
     #utils.__left_turn()
     #time.sleep(3)
     #utils.__stop()
