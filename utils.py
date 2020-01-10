@@ -10,22 +10,29 @@ def __robo_wheel_control(wheel, direction='forward', mode='HIGH'):
     if direction == 'reverse':
         GPIO.output(gpio['wheel'][wheel + '_reverse'], eval('GPIO.'+ mode))
 
-def __robo_move():
+def __forward():
     '''Move left wheel forward.'''
     __robo_wheel_control('left', 'forward', 'HIGH')
     __robo_wheel_control('right', 'forward', 'HIGH')
 
-def __robo_stop():
+def __reverse():
+    '''Move left wheel forward.'''
+    __robo_wheel_control('left', 'reverse', 'HIGH')
+    __robo_wheel_control('right', 'reverse', 'HIGH')
+
+def __stop():
     __robo_wheel_control('left', 'forward', 'LOW')
     __robo_wheel_control('right', 'forward', 'LOW')
 
 def __left_turn():
-    __robo_wheel_control('left', 'forward', 'HIGH')
-    __robo_wheel_control('right', 'reverse', 'HIGH')
+    '''Move robo left.'''
+    __robo_wheel_control('left', 'reverse', 'HIGH')
+    __robo_wheel_control('right', 'forward', 'HIGH')
 
 def __right_turn():
+    '''Move robo right.'''
     __robo_wheel_control('left', 'forward', 'HIGH')
-    __robo_wheel_control('right', 'forward', 'LOW')
+    __robo_wheel_control('right', 'reverse', 'LOW')
 
 def detect_obstacle_dist():
     '''Calculate the distance of obstacle.'''
@@ -74,9 +81,6 @@ def __get_distance():
     distance = (TimeElapsed * 34300) / 2
     return distance    
 
-def robo_stop():
-    '''Stop the movement of robo.'''
-    return True
 
 def robo_init():
     '''Init the robo GPIO conf and get ready for action.'''
