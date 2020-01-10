@@ -25,6 +25,7 @@ def __stop():
     __robo_wheel_control('right', 'forward', 'LOW')
     __robo_wheel_control('left', 'reverse', 'LOW')
     __robo_wheel_control('right', 'reverse', 'LOW')
+    return
 
 def __left_turn():
     '''Move robo left.'''
