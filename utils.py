@@ -25,12 +25,12 @@ def __reverse():
     print('reverse stop')
 
 def __stop():
-    print('reverse start')
+    print('stop start')
     __robo_wheel_control('left', 'forward', 'LOW')
     __robo_wheel_control('right', 'forward', 'LOW')
     __robo_wheel_control('left', 'reverse', 'LOW')
     __robo_wheel_control('right', 'reverse', 'LOW')
-    print('reverse stop')
+    print('stop stop')
 
 def __left_turn():
     '''Move robo left.'''
