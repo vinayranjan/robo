@@ -39,12 +39,11 @@ def detect_obstacle_dist():
                 front_pwm.ChangeDutyCycle(control[x])
                 time.sleep(0.5)
                 dist = __get_distance()
-                print(dist)
+                print(dist, x, control[x])
                 if dist < 25:
                     __robo_stop()
                 else:
-                    pass
-                    
+                    __robo_move()
     except KeyboardInterrupt:
         GPIO.cleanup()
 

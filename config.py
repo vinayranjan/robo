@@ -7,10 +7,10 @@ gpio = {
 
     # motors responsible for moving the robo
     'wheel': {
-        'left_forward': 26,
-        'left_reverse': 20,
-        'right_forward': 16,
-        'right_reverse': 19   
+        'left_reverse': 26,
+        'left_forward': 20,
+        'right_reverse': 16,
+        'right_forward': 19   
     },
     # sensors responsible for obstacle detection
     'ultrasensor': {
