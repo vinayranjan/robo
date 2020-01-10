@@ -6,7 +6,8 @@ from config import gpio, threshold
 def __robo_wheel_control(wheel, direction='forward', mode='HIGH'):
     '''Move wheels forward/reverse.'''
     if direction == 'forward':
-        GPIO.output(gpio['wheel'][wheel + '_forward'], eval('GPIO.'+ mode))
+        GPIO.output(gpio['wheel'][wheel + '_forward'], eval('GPIO.HIGH'))
+        # GPIO.output(gpio['wheel'][wheel + '_reverse'], eval('GPIO.'+ mode))
     if direction == 'reverse':
         GPIO.output(gpio['wheel'][wheel + '_reverse'], eval('GPIO.'+ mode))
 
@@ -15,6 +16,11 @@ def __forward():
     print('forward start')
     __robo_wheel_control('left', 'forward', 'HIGH')
     __robo_wheel_control('right', 'forward', 'HIGH')
+
+    time.sleep(3)
+
+    __robo_wheel_control('left', 'forward', 'LOW')
+    __robo_wheel_control('right', 'forward', 'LOW')
     print('forward end')
 
 def __reverse():
@@ -22,6 +28,11 @@ def __reverse():
     print('reverse start')
     __robo_wheel_control('left', 'reverse', 'HIGH')
     __robo_wheel_control('right', 'reverse', 'HIGH')
+
+    time.sleep(3)
+
+    __robo_wheel_control('left', 'reverse', 'LOW')
+    __robo_wheel_control('right', 'reverse', 'LOW')
     print('reverse stop')
 
 def __stop():

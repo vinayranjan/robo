@@ -13,12 +13,12 @@ if __name__ == '__main__':
     utils.__forward()
 
     time.sleep(3)
-    utils.__stop()
+    #utils.__stop()
     
     utils.__reverse()
 
-    time.sleep(3)
-    utils.__stop()
+    #time.sleep(3)
+    #utils.__stop()
     
     #utils.__left_turn()
     #time.sleep(3)
