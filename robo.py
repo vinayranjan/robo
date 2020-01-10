@@ -12,18 +12,18 @@ if __name__ == '__main__':
 
     utils.__forward()
     time.sleep(3)
-    utils.__robo_stop()
+    utils.__stop()
 
     utils.__left_turn()
     time.sleep(3)
-    utils.__robo_stop()
+    utils.__stop()
 
     utils.__right_turn()
     time.sleep(3)
-    utils.__robo_stop()
+    utils.__stop()
 
     utils.__reverse()
     time.sleep(3)
-    utils.__robo_stop()
+    utils.__stop()
 
     GPIO.cleanup()
