@@ -24,6 +24,6 @@ if __name__ == '__main__':
 
     utils.__reverse()
     time.sleep(3)
-    ˛¸˛	utils.__robo_stop()
+    utils.__robo_stop()
 
     GPIO.cleanup()
