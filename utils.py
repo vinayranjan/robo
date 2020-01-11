@@ -67,7 +67,7 @@ def detect_obstacle_dist():
                 front_pwm.ChangeDutyCycle(control[angle])
                 time.sleep(0.5)
                 dist = __get_distance()
-                angle_history.push(dist)
+                angle_history.append(dist)
                 if dist < threshold['critical_dist']:
                     __stop()
                 if dist > threshold['min_stop_dist']:
@@ -76,7 +76,8 @@ def detect_obstacle_dist():
                         __forward()
                 else:
                     __stop()
-                    print(max(angle_history), angle_history)
+                    if angle == 2:
+                        print(max(angle_history), angle_history)
     except KeyboardInterrupt:
         GPIO.cleanup()
 
