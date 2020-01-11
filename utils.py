@@ -67,7 +67,7 @@ def detect_obstacle_dist():
                 time.sleep(0.5)
                 dist = __get_distance()
                 print(dist, angle)
-                if dist < threshold.min_stop_dist:
+                if dist < threshold['min_stop_dist']:
                     __stop()
                 else:
                     __forward()
