@@ -62,18 +62,21 @@ def detect_obstacle_dist():
     control = threshold['servo_cycle']
     try:
         while True:
+            angle_history = []
             for angle in range(len(control)):
                 front_pwm.ChangeDutyCycle(control[angle])
                 time.sleep(0.5)
                 dist = __get_distance()
-                print(dist, angle)
+                angle_history.push(dist)
                 if dist < threshold['critical_dist']:
                     __stop()
                 if dist > threshold['min_stop_dist']:
                     if angle == 1:
+                        # center lline
                         __forward()
                 else:
                     __stop()
+                    print(max(angle_history), angle_history)
     except KeyboardInterrupt:
         GPIO.cleanup()
 
