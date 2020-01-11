@@ -97,8 +97,8 @@ def detect_obstacle_dist():
                     __reverse()
                     time.sleep(1)
                     __stop()
-                else:
-                    __stop()
+                # else:
+                #     __stop()
     except KeyboardInterrupt:
         GPIO.cleanup()
 
