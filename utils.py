@@ -73,28 +73,30 @@ def detect_obstacle_dist():
                 time.sleep(0.5)
                 dist = __get_distance()
                 angle_history.append(dist)
-                if dist > threshold['min_stop_dist']:
+                if dist > threshold['min_approach_dist']:
                     if angle == 1:
                         # center lline
                         __forward()
-                    elif angle == 2:
-                        _max = max(angle_history)
-                        if angle_history.index(_max) == 0:
-                            # can go right
-                            # print("right")
-                            __right_turn()
-                            time.sleep(1)
-                            __stop()
-                        elif angle_history.index(_max) == 2:
-                            # can go left
-                            # print("left")
-                            __left_turn()
-                            time.sleep(1)
-                            __stop()
-                        # else:
-                        # print(max(angle_history), angle_history)
+                elif angle == 2 and angle_history[1] < threshold['min_approach_dist']:
+                    # when forward distance is less than min_dist check left OR right
+                    _max = max(angle_history)
+                    if angle_history.index(_max) == 0:
+                        # can go right
+                        # print("right")
+                        __right_turn()
+                        time.sleep(1)
+                        __stop()
+                    elif angle_history.index(_max) == 2:
+                        # can go left
+                        # print("left")
+                        __left_turn()
+                        time.sleep(1)
+                        __stop()
+                    print(angle_history, angle_history.index(_max))
                 elif dist < threshold['critical_dist']:
                     __reverse()
+                    time.sleep(1)
+                    __stop()
                 else:
                     __stop()
     except KeyboardInterrupt:
