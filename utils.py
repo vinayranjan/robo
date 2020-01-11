@@ -1,15 +1,17 @@
 """All the required modules/functions available here."""
 import time
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 from config import gpio, threshold
 
 
 def __robo_wheel_control(wheel, direction='forward', mode='HIGH'):
     '''Move wheels forward/reverse.'''
     if direction == 'forward':
-        GPIO.output(gpio['wheel'][wheel + '_forward'], eval('GPIO.HIGH'))
+        time.sleep(0.01)
+        GPIO.output(gpio['wheel'][wheel + '_forward'], eval('GPIO.'+mode))
         # GPIO.output(gpio['wheel'][wheel + '_reverse'], eval('GPIO.'+ mode))
     if direction == 'reverse':
+        time.sleep(0.01)
         GPIO.output(gpio['wheel'][wheel + '_reverse'], eval('GPIO.'+ mode))
 
 def __forward():
@@ -18,10 +20,9 @@ def __forward():
     __robo_wheel_control('left', 'forward', 'HIGH')
     __robo_wheel_control('right', 'forward', 'HIGH')
 
-    time.sleep(3)
 
-    __robo_wheel_control('left', 'forward', 'LOW')
-    __robo_wheel_control('right', 'forward', 'LOW')
+    #__robo_wheel_control('left', 'forward', 'LOW')
+    #__robo_wheel_control('right', 'forward', 'LOW')
     print('forward end')
 
 def __reverse():
@@ -30,10 +31,10 @@ def __reverse():
     __robo_wheel_control('left', 'reverse', 'HIGH')
     __robo_wheel_control('right', 'reverse', 'HIGH')
 
-    time.sleep(3)
+    #time.sleep(3)
 
-    __robo_wheel_control('left', 'reverse', 'LOW')
-    __robo_wheel_control('right', 'reverse', 'LOW')
+    #__robo_wheel_control('left', 'reverse', 'LOW')
+    #__robo_wheel_control('right', 'reverse', 'LOW')
     print('reverse stop')
 
 def __stop():
