@@ -67,10 +67,10 @@ def detect_obstacle_dist():
                 time.sleep(0.5)
                 dist = __get_distance()
                 print(dist, angle)
-                if dist < 25:
-                    pass #__robo_stop()
+                if dist < threshold.min_stop_dist:
+                    __stop()
                 else:
-                    pass #__robo_move()
+                    __forward()
     except KeyboardInterrupt:
         GPIO.cleanup()
 
