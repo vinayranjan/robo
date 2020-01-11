@@ -82,9 +82,8 @@ def detect_obstacle_dist():
                     # else:
                     #     __stop()
                     #     print("do something here")
-                    print("if", dist, angle_history)
-                else:
-                    if angle == 2:
+                        print("if", dist, angle_history)
+                    elif angle == 2:
                         if angle_history[0] > angle_history[1]:
                             # can go left
                             __right_turn()
