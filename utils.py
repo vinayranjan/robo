@@ -60,18 +60,17 @@ def detect_obstacle_dist():
     front_pwm = GPIO.PWM(gpio['servo']['front_trigger'], 50)
     front_pwm.start(2.5) # set servo to 0 degree.
     control = threshold['servo_cycle']
-    __robo_move()
     try:
         while True:
             for x in range(len(control)):
                 front_pwm.ChangeDutyCycle(control[x])
                 time.sleep(0.5)
                 dist = __get_distance()
-                print(dist, x, control[x])
+                print(dist)
                 if dist < 25:
-                    __robo_stop()
+                    pass #__robo_stop()
                 else:
-                    __robo_move()
+                    pass #__robo_move()
     except KeyboardInterrupt:
         GPIO.cleanup()
 
