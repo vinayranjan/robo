@@ -82,20 +82,20 @@ def detect_obstacle_dist():
                     # else:
                     #     __stop()
                     #     print("do something here")
-                        print("if", dist, angle_history)
+                        # print("if", dist, angle_history)
                     elif angle == 2:
                         if angle_history[0] > angle_history[1]:
                             # can go left
                             __right_turn()
-                            # time.sleep(1)
+                            time.sleep(1)
                             __stop()
                         elif angle_history[2] > angle_history[1]:
                             # can go right
                             __left_turn()
-                            # time.sleep(1)
+                            time.sleep(1)
                             __stop()
                         # else:
-                        print(max(angle_history), angle_history)
+                        # print(max(angle_history), angle_history)
     except KeyboardInterrupt:
         GPIO.cleanup()
 
