@@ -73,11 +73,12 @@ def detect_obstacle_dist():
                 time.sleep(0.5)
                 dist = __get_distance()
                 angle_history.append(dist)
+
                 if dist > threshold['min_stop_dist']:
                     if angle == 1:
                         # center lline
                         __forward()
-                elif (angle == 2) and (angle_history[1] < threshold['min_stop_dist']):
+                elif angle == 2 and angle_history[1] < threshold['min_stop_dist']:
                     # when forward distance is less than min_dist check left OR right
                     print(angle_history)
                     if angle_history[0] > angle_history[2]:
