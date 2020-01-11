@@ -53,7 +53,7 @@ def __left_turn():
 def __right_turn():
     '''Move robo right.'''
     __robo_wheel_control('left', 'forward', 'HIGH')
-    __robo_wheel_control('right', 'reverse', 'LOW')
+    __robo_wheel_control('right', 'reverse', 'HIGH')
 
 def detect_obstacle_dist():
     '''Calculate the distance of obstacle.'''
