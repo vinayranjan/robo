@@ -86,16 +86,16 @@ def detect_obstacle_dist():
                     elif angle == 2:
                         if angle_history[0] > angle_history[1]:
                             # can go right
-                            print("right")
-                            # __right_turn()
-                            # time.sleep(1)
-                            # __stop()
+                            # print("right")
+                            __right_turn()
+                            time.sleep(1)
+                            __stop()
                         elif angle_history[2] > angle_history[1]:
                             # can go left
-                            print("left")
-                            # __left_turn()
-                            # time.sleep(1)
-                            # __stop()
+                            # print("left")
+                            __left_turn()
+                            time.sleep(1)
+                            __stop()
                         # else:
                         # print(max(angle_history), angle_history)
                 else:
