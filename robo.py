@@ -15,22 +15,19 @@ if __name__ == '__main__':
     time.sleep(3)
     utils.__stop()
     
+    
+    utils.__left_turn()
+    time.sleep(3)
+    utils.__stop()
+
+    utils.__right_turn()
+    time.sleep(3)
+    utils.__stop()
+
     utils.__reverse()
     time.sleep(3)
-    #time.sleep(3)
     utils.__stop()
+    time.sleep(1)
     
-    #utils.__left_turn()
-    #time.sleep(3)
-    #utils.__stop()
-
-    #utils.__right_turn()
-    #time.sleep(3)
-    #utils.__stop()
-
-    #utils.__reverse()
-    #time.sleep(3)
-    #utils.__stop()
-
     GPIO.cleanup()
     exit(0)
