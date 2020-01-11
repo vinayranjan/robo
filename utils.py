@@ -98,6 +98,8 @@ def detect_obstacle_dist():
                             # __stop()
                         # else:
                         # print(max(angle_history), angle_history)
+                else:
+                    __stop()
     except KeyboardInterrupt:
         GPIO.cleanup()
 
