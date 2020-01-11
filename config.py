@@ -10,7 +10,7 @@ gpio = {
         'left_reverse': 26,
         'left_forward': 20,
         'right_reverse': 16,
-        'right_forward': 19   
+        'right_forward': 19
     },
     # sensors responsible for obstacle detection
     'ultrasensor': {
