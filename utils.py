@@ -87,12 +87,12 @@ def detect_obstacle_dist():
                         if angle_history[0] > angle_history[1]:
                             # can go left
                             __right_turn()
-                            time.sleep(1)
+                            # time.sleep(1)
                             __stop()
                         elif angle_history[2] > angle_history[1]:
                             # can go right
                             __left_turn()
-                            time.sleep(1)
+                            # time.sleep(1)
                             __stop()
                         # else:
                         print(max(angle_history), angle_history)
