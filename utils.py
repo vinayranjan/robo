@@ -82,7 +82,7 @@ def detect_obstacle_dist():
                     # else:
                     #     __stop()
                     #     print("do something here")
-                    print(max(angle_history), angle_history)
+                    print(dist, angle_history)
                 else:
                     if angle == 2:
                         if angle_history[0] > angle_history[1]:
