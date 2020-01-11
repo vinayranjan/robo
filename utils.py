@@ -68,11 +68,12 @@ def detect_obstacle_dist():
                 dist = __get_distance()
                 print(dist, angle)
                 if dist < threshold['critical_dist']:
-                    __reverse()
-                if dist < threshold['min_stop_dist']:
                     __stop()
+                if dist > threshold['min_stop_dist']:
+                    if angle == 1:
+                        __forward()
                 else:
-                    __forward()
+                    __stop()
     except KeyboardInterrupt:
         GPIO.cleanup()
 
