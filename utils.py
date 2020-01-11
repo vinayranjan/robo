@@ -74,9 +74,9 @@ def detect_obstacle_dist():
                     if angle == 1:
                         # center lline
                         __forward()
-                    else:
-                        __stop()
-                        print("do something here")
+                    # else:
+                    #     __stop()
+                    #     print("do something here")
                 else:
                     __stop()
                     if angle == 2:
