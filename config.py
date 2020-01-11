@@ -16,7 +16,6 @@ gpio = {
     'ultrasensor': {
         'front_trigger': 18,
         'front_echo': 24,
-        'reverse_trigger': 0, # to be defined later
         'reverse_trigger': 0 # to be defined later 
     }
 }
