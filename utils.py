@@ -68,12 +68,15 @@ def detect_obstacle_dist():
                 time.sleep(0.5)
                 dist = __get_distance()
                 angle_history.append(dist)
-                if dist < threshold['critical_dist']:
-                    __stop()
+                # if dist < threshold['critical_dist']:
+                #     __stop()
                 if dist > threshold['min_stop_dist']:
                     if angle == 1:
                         # center lline
                         __forward()
+                    else:
+                        __stop()
+                        print("do something here")
                 else:
                     __stop()
                     if angle == 2:
