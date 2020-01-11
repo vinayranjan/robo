@@ -91,7 +91,7 @@ def detect_obstacle_dist():
                         # can go left
                         print("left")
                         __left_turn()
-                    time.sleep(0.50)
+                    time.sleep(0.60)
                     __stop()
                 elif dist < threshold['critical_dist']:
                     __reverse()
