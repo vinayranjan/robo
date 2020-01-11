@@ -86,22 +86,22 @@ def detect_obstacle_dist():
                         # can go right
                         # print("right")
                         __right_turn()
-                        time.sleep(1)
-                        __stop()
+                        # time.sleep(1)
+                        # __stop()
                     # elif angle_history[0] > angle_history[2]:
                     else:
                         # can go left
                         # print("left")
                         __left_turn()
-                        time.sleep(1)
-                        __stop()
+                    time.sleep(2)
+                    __stop()
                     print(angle_history, angle_history.index(_max))
                 elif dist < threshold['critical_dist']:
                     __reverse()
                     time.sleep(1)
                     __stop()
-                else:
-                    __stop()
+                # else:
+                #     __stop()
     except KeyboardInterrupt:
         GPIO.cleanup()
 
