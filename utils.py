@@ -74,32 +74,31 @@ def detect_obstacle_dist():
                 dist = __get_distance()
                 angle_history.append(dist)
 
-                if dist > threshold['min_stop_dist']:
-                    if angle == 1:
-                        # center lline
-                        __forward()
+                if dist > threshold['min_stop_dist'] and angle == 1:
+                    # center lline
+                    __forward()
                 elif angle == 2 and angle_history[1] < threshold['min_stop_dist']:
                     # when forward distance is less than min_dist check left OR right
                     print(angle_history)
                     if angle_history[0] > angle_history[2]:
                         # can go right
-                        # print("right")
-                        __right_turn()
+                        print("right")
+                        # __right_turn()
                         # time.sleep(1)
                         # __stop()
                     # elif angle_history[0] > angle_history[2]:
                     else:
                         # can go left
-                        # print("left")
-                        __left_turn()
-                    time.sleep(2)
-                    __stop()
+                        print("left")
+                        # __left_turn()
+                    # time.sleep(1)
+                    # __stop()
                 elif dist < threshold['critical_dist']:
                     __reverse()
                     time.sleep(1)
                     __stop()
-                # else:
-                #     __stop()
+                else:
+                    __stop()
     except KeyboardInterrupt:
         GPIO.cleanup()
 
