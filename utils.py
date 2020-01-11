@@ -93,7 +93,6 @@ def detect_obstacle_dist():
                         __left_turn()
                     time.sleep(2)
                     __stop()
-                    print(angle_history, angle_history.index(_max))
                 elif dist < threshold['critical_dist']:
                     __reverse()
                     time.sleep(1)
