@@ -95,7 +95,7 @@ def detect_obstacle_dist():
                     __stop()
                 elif dist < threshold['critical_dist']:
                     __reverse()
-                    time.sleep(1)
+                    time.sleep(2)
                     __stop()
                 # else:
                 #     __stop()
