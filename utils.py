@@ -67,6 +67,8 @@ def detect_obstacle_dist():
                 time.sleep(0.5)
                 dist = __get_distance()
                 print(dist, angle)
+                if dist < threshold['critical_dist']:
+                    __reverse()
                 if dist < threshold['min_stop_dist']:
                     __stop()
                 else:
