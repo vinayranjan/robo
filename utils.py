@@ -1,7 +1,8 @@
 """All the required modules/functions available here."""
 import time
-import RPi.GPIO as GPIO
+#import RPi.GPIO as GPIO
 from config import gpio, threshold
+
 
 def __robo_wheel_control(wheel, direction='forward', mode='HIGH'):
     '''Move wheels forward/reverse.'''
