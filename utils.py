@@ -73,6 +73,8 @@ def detect_obstacle_dist():
                 time.sleep(0.5)
                 dist = __get_distance()
                 angle_history.append(dist)
+                print(angle, angle_history[1])
+
                 if dist > threshold['min_stop_dist']:
                     if angle == 1:
                         # center lline
