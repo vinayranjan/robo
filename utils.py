@@ -65,7 +65,7 @@ def detect_obstacle_dist():
             for angle in range(len(control)):
                 front_pwm.ChangeDutyCycle(control[angle])
                 time.sleep(0.5)
-                dist, angle = __get_distance()
+                dist = __get_distance()
                 print(dist, angle)
                 if dist < 25:
                     pass #__robo_stop()
