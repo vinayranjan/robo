@@ -84,8 +84,13 @@ def detect_obstacle_dist():
         while True:
 
             angle_history = __get_view()
-
-            if angle_history[1] > threshold['min_stop_dist']:
+            print(angle_history)
+            if min(angle_history) < threshold['critical_dist']:
+                print("reverse")
+                __reverse()
+                time.sleep(2)
+                __stop()
+            elif angle_history[1] > threshold['min_stop_dist']:
                 # center lline
                 __forward()
                 print("forward")
@@ -101,13 +106,7 @@ def detect_obstacle_dist():
                     __left_turn()
                 time.sleep(0.60)
                 __stop()
-            elif min(angle_history) < threshold['critical_dist']:
-                print("reverse")
-                __reverse()
-                time.sleep(2)
-                __stop()
-                # else:
-                #     __stop()
+
     except KeyboardInterrupt:
         GPIO.cleanup()
 
