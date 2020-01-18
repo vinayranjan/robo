@@ -81,13 +81,12 @@ def detect_obstacle_dist():
     # front_pwm.start(2.5)  # set servo to 0 degree.
     # control = threshold['servo_cycle']
     turn_out = 0.50
-    reverse_flag = True
     try:
         while True:
             angle_history = __get_view()
             print(angle_history)
 
-            if min(angle_history) < threshold['critical_dist'] and reverse_flag:
+            if min(angle_history) < threshold['critical_dist']:
                 print("reverse")
                 __reverse()
                 time.sleep(turn_out)
