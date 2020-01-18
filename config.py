@@ -22,8 +22,8 @@ gpio = {
 
 threshold = {
     'critical_dist': 50,
-    'min_stop_dist': 70,
-    'approach_dist': 70,
+    'min_stop_dist': 100,
+    'approach_dist': 100,
     'servo_cycle': [5, 7.5, 10],
 }
 
