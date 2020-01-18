@@ -60,7 +60,62 @@ def __right_turn():
     __robo_wheel_control('right', 'reverse', 'HIGH')
 
 
+def __get_view():
+    front_pwm = GPIO.PWM(gpio['servo']['front_trigger'], 50)
+    front_pwm.start(2.5)  # set servo to 0 degree.
+    control = threshold['servo_cycle']
+
+    angle_history = []
+    for angle in range(len(control)):
+        front_pwm.ChangeDutyCycle(control[angle])
+        time.sleep(0.5)
+        dist = __get_distance()
+        angle_history.append(dist)
+
+    return angle_history
+
+
 def detect_obstacle_dist():
+    '''Calculate the distance of obstacle.'''
+    # front_pwm = GPIO.PWM(gpio['servo']['front_trigger'], 50)
+    # front_pwm.start(2.5)  # set servo to 0 degree.
+    # control = threshold['servo_cycle']
+    try:
+        while True:
+
+            angle_history = __get_view()
+
+            if angle_history[1] > threshold['min_stop_dist']:
+                # center lline
+                # __forward()
+                print("forward")
+            elif angle_history[1] < threshold['min_stop_dist']:
+                # when forward distance is less than min_dist check left OR right
+                if angle_history[0] < angle_history[2]:
+                    # can go right
+                    print("right")
+                    # __right_turn()
+                    # time.sleep(1)
+                    # __stop()
+                # elif angle_history[0] > angle_history[2]:
+                else:
+                    # can go left
+                    print("left")
+                    # __left_turn()
+                time.sleep(0.60)
+                __stop()
+            elif min(angle_history) < threshold['critical_dist']:
+                print("reverse")
+                # __reverse()
+                # time.sleep(2)
+                # __stop()
+                # else:
+                #     __stop()
+    except KeyboardInterrupt:
+        GPIO.cleanup()
+
+
+def detect_obstacle_dist_old():
     '''Calculate the distance of obstacle.'''
     front_pwm = GPIO.PWM(gpio['servo']['front_trigger'], 50)
     front_pwm.start(2.5)  # set servo to 0 degree.
