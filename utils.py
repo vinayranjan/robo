@@ -109,6 +109,7 @@ def detect_obstacle_dist():
                 time.sleep(turn_out)
                 turn_out += 0.50
                 __stop()
+            print(turn_out)
 
     except KeyboardInterrupt:
         GPIO.cleanup()
