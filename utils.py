@@ -80,6 +80,7 @@ def detect_obstacle_dist():
     # front_pwm = GPIO.PWM(gpio['servo']['front_trigger'], 50)
     # front_pwm.start(2.5)  # set servo to 0 degree.
     # control = threshold['servo_cycle']
+    turn_out = 0.50
     try:
         while True:
 
@@ -93,6 +94,7 @@ def detect_obstacle_dist():
             elif angle_history[1] > threshold['min_stop_dist']:
                 # center lline
                 __forward()
+                turn_out = 0.50
                 print("forward")
             elif angle_history[1] < threshold['min_stop_dist']:
                 # when forward distance is less than min_dist check left OR right
@@ -104,7 +106,8 @@ def detect_obstacle_dist():
                     # can go left
                     print("left")
                     __left_turn()
-                time.sleep(0.60)
+                time.sleep(turn_out)
+                turn_out += 0.50
                 __stop()
 
     except KeyboardInterrupt:
