@@ -84,13 +84,14 @@ def detect_obstacle_dist():
     reverse_flag = True
     try:
         while True:
-
             angle_history = __get_view()
             print(angle_history)
+
             if min(angle_history) < threshold['critical_dist'] and reverse_flag:
                 print("reverse")
                 __reverse()
-                time.sleep(2)
+                time.sleep(turn_out)
+                turn_out += 0.50
                 __stop()
             elif angle_history[1] < threshold['min_stop_dist']:
                 # when forward distance is less than min_dist check left OR right
