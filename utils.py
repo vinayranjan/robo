@@ -92,6 +92,12 @@ def detect_obstacle_dist():
                 time.sleep(turn_out)
                 turn_out += 0.50
                 __stop()
+            elif turn_out > 2:
+                # incase it starts rotating 360
+                # go clockwise and check over small angles
+                __right_turn()
+                time.sleep(0.25)
+                __stop()
             elif angle_history[1] < threshold['min_stop_dist']:
                 # when forward distance is less than min_dist check left OR right
                 if angle_history[0] > angle_history[2]:
@@ -110,12 +116,6 @@ def detect_obstacle_dist():
                 __forward()
                 turn_out = 0.50
                 print("forward")
-            elif turn_out > 3:
-                # incase it starts rotating 360
-                # go clockwise and check over small angles
-                __right_turn()
-                time.sleep(0.25)
-                __stop()
             print(turn_out)
 
     except KeyboardInterrupt:
