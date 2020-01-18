@@ -87,8 +87,12 @@ def detect_obstacle_dist():
             print(angle_history)
 
             if min(angle_history) < threshold['critical_dist']:
-                print("reverse")
-                __reverse()
+                if angle_history[1] < threshold['min_stop_dist']:
+                    # obstacle ahead
+                    print("reverse")
+                    __reverse()
+                else:
+                    _make_turn(angle_history)
                 time.sleep(turn_out)
                 turn_out += 0.50
                 __stop()
@@ -103,14 +107,7 @@ def detect_obstacle_dist():
                     turn_out = 0.50
             elif angle_history[1] < threshold['min_stop_dist']:
                 # when forward distance is less than min_dist check left OR right
-                if angle_history[0] > angle_history[2]:
-                    # can go right
-                    print("right")
-                    __right_turn()
-                else:
-                    # can go left
-                    print("left")
-                    __left_turn()
+                _make_turn(angle_history)
                 time.sleep(turn_out)
                 turn_out += 0.25
                 __stop()
@@ -125,47 +122,16 @@ def detect_obstacle_dist():
         GPIO.cleanup()
 
 
-def detect_obstacle_dist_old():
-    '''Calculate the distance of obstacle.'''
-    front_pwm = GPIO.PWM(gpio['servo']['front_trigger'], 50)
-    front_pwm.start(2.5)  # set servo to 0 degree.
-    control = threshold['servo_cycle']
-    try:
-        while True:
-            angle_history = []
-            for angle in range(len(control)):
-                front_pwm.ChangeDutyCycle(control[angle])
-                time.sleep(0.5)
-                dist = __get_distance()
-                angle_history.append(dist)
-
-                if dist > threshold['min_stop_dist'] and angle == 1:
-                    # center lline
-                    __forward()
-                elif angle == 2 and angle_history[1] < threshold['min_stop_dist']:
-                    # when forward distance is less than min_dist check left OR right
-                    print(angle_history)
-                    if angle_history[0] < angle_history[2]:
-                        # can go right
-                        print("right")
-                        __right_turn()
-                        # time.sleep(1)
-                        # __stop()
-                    # elif angle_history[0] > angle_history[2]:
-                    else:
-                        # can go left
-                        print("left")
-                        __left_turn()
-                    time.sleep(0.60)
-                    __stop()
-                elif dist < threshold['critical_dist']:
-                    __reverse()
-                    time.sleep(2)
-                    __stop()
-                # else:
-                #     __stop()
-    except KeyboardInterrupt:
-        GPIO.cleanup()
+def _make_turn(angle_history):
+    # when forward distance is less than min_dist check left OR right
+    if angle_history[0] > angle_history[2]:
+        # can go right
+        print("right")
+        __right_turn()
+    else:
+        # can go left
+        print("left")
+        __left_turn()
 
 
 def __get_distance():
