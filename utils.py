@@ -87,7 +87,7 @@ def detect_obstacle_dist():
             print(angle_history)
 
             if min(angle_history) < threshold['critical_dist']:
-                if angle_history[1] < threshold['min_stop_dist']:
+                if angle_history[1] < threshold['critical_dist']:
                     # obstacle ahead
                     print("reverse")
                     __reverse()
