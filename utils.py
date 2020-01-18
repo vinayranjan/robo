@@ -98,6 +98,9 @@ def detect_obstacle_dist():
                 __right_turn()
                 time.sleep(0.25)
                 __stop()
+                if angle_history[1] > threshold['min_stop_dist']:
+                    # if robo can move forward reset turn_out
+                    turn_out = 0.50
             elif angle_history[1] < threshold['min_stop_dist']:
                 # when forward distance is less than min_dist check left OR right
                 if angle_history[0] > angle_history[2]:
