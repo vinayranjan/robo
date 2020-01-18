@@ -92,7 +92,7 @@ def detect_obstacle_dist():
                 time.sleep(turn_out)
                 turn_out += 0.50
                 __stop()
-            elif turn_out > 2:
+            elif turn_out > 3:
                 # incase it starts rotating 360
                 # go clockwise and check over small angles
                 __right_turn()
